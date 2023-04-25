@@ -33,13 +33,13 @@ img_gray = grayscale(img)
 # img_gray.show()
 
 img_edge = edge(img_gray)
-img_edge.show()
+# img_edge.show()
 # img_edge_enhance = img_edge.filter(ImageFilter.EDGE_ENHANCE)
 # img_edge_enhance.show()
-img_threshold = threshold(img_edge, 100)
-img_threshold.show()
-
+img_threshold = threshold(img_gray, 100)
 # img_threshold.show()
 
-# img_invert = invert(img_threshold)
-# img_invert.show()
+img_threshold.show()
+
+img_invert = invert(img_threshold)
+img_invert.show()
