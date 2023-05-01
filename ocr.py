@@ -26,7 +26,8 @@ def ocr_img(response):
   """
 
   img = Image.open(BytesIO(response.content))
-  config = r'--oem 3 --psm 6' #oem: default OCR engine; psm: assume single block text
+  config = r'--oem 3 --psm 6 tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyz' #oem: default OCR engine; psm: assume single block text
+  # config = r'--oem 3 --psm 6' #oem: default OCR engine; psm: assume single block text
   text = pytesseract.image_to_string(img, config=config, lang="eng")
   return text
 
