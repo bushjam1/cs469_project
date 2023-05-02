@@ -75,7 +75,7 @@ if __name__ == "__main__":
     url = sys.argv[1]
   else:
     # raise Exception("Usage: python3 py_ocr.py <image_url.jpg>")
-    url = "https://i.pinimg.com/736x/7b/08/c9/7b08c9eff1bce30f6e13afba65002f10.jpg"
+    url = "https://openclipart.org/image/2400px/svg_to_png/194537/receipt.png"
 
     print("Requesting...")
     img = request_img(url)
