@@ -5,8 +5,9 @@ from io import BytesIO
 import pytesseract
 from datetime import datetime
 
-
-# Obtian image 
+#------------------------------------------------------------------------------
+# Request image 
+#------------------------------------------------------------------------------
 
 def request_img(url):
   """Return image from internets with Requests and passed url. 
@@ -21,8 +22,9 @@ def request_img(url):
 
   return img
 
-
+#------------------------------------------------------------------------------
 # Preprocess image 
+#------------------------------------------------------------------------------
 
 # grayscale 
 def grayscale(img):
@@ -46,7 +48,9 @@ def preprocess(img):
     result = img_threshold
     return result 
 
-
+#------------------------------------------------------------------------------
+# OCR Image
+#------------------------------------------------------------------------------
 
 def ocr_img(img):
   """Recognize text with Tesseract and return string. 
@@ -62,6 +66,9 @@ def ocr_img(img):
   return text
 
 
+#------------------------------------------------------------------------------
+# Main
+#------------------------------------------------------------------------------
 
 if __name__ == "__main__":
   if len(sys.argv) == 2:
