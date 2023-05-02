@@ -77,3 +77,4 @@ if __name__ == "__main__":
     print("Preprocess successful.")
     text = ocr_img(preprocessed)
     print("OCR successful.")
+    print(text)
