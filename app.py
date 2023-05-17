@@ -32,6 +32,7 @@ def get_img_text(url):
     text = ocr_img(preprocessed)
     print("OCR successful.")
     print(text)
+    return text
 
 
 @app.route('/api', methods=["GET"])
@@ -55,5 +56,6 @@ def api():
 
 
 if __name__ == "__main__":
+    host = '10.0.0.1' #'localhost.'
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='localhost.',port=port, debug=True)
+    app.run(host=host, port=port, debug=True)
