@@ -33,6 +33,7 @@ def get_img_text(url):
     print("OCR successful.")
     print(text)
     return text
+    
 
 
 @app.route('/api', methods=["GET"])
@@ -55,11 +56,28 @@ def api():
 
 @app.route('/api', methods=["GET"])
 def gui():
-    if request.method == "GET": 
+
+    response = None
+    url = ''
+
+    # check if passed url 
+    url = request.args['url']
+
+    if request.method == "GET" and len(url) == 0: 
             return render_template("gui.j2")
 
 
+    else:
+        # validate passed url 
+        if not validate_url(url):
+            response = "error: url invalid"
+        else: 
+            response = get_img_text(url)
 
+        # return response in json
+
+        # return jsonify({'response': response})
+            return render_template("response.j2", response=response)
 
 if __name__ == "__main__":
     host = '10.0.0.1' #'localhost.'
