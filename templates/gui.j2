@@ -6,19 +6,25 @@ https://jinja.palletsprojects.com/en/2.10.x/templates/#base-template
 <head>
     {% block head %}
     <link rel="stylesheet" href="../static/style.css" />
-    <title>{% block title %}{% endblock %} - My Webpage</title>
+    <title>{% block title %}{% endblock %} - Image-to-Text v. 1.0.0 </title>
     {% endblock %}
 </head>
 <body>
     <div id="content">
     {% block content %}
-    <h1>Flask Application</h1>
-    <p>Hello there!</p>
+    <h1>Image-to-Text</h1>
+    <p>Hello there! Input a URL to an image on the web in .jpg or .png format and get back detected text.</p>
+    <form action="/action_page.php">
+    <label for="url">URL:</label><br>
+    <input type="text" id="url" name="url"><br>
+    <input type="submit" value="Submit">
+    </form> 
+
     {% endblock %}
     </div>
     <div id="footer">
         {% block footer %}
-        &copy; Copyright 2022 by me.
+        &copy; Copyright 2023 by me.
         {% endblock %}
     </div>
 </body>
