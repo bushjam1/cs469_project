@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from urllib.parse import urlparse
-import urllib
+from urllib.parse import unquote
 import json 
 
 from img_to_text import request_img, preprocess, ocr_img
@@ -69,7 +69,7 @@ def gui():
 
 
     else:
-        url = urllib.unquote(request.args['url'])
+        url = unquote(request.args['url'])
         print('**URL',url)
 
         # validate passed url 
