@@ -54,20 +54,23 @@ def api():
     # return response in json
     return jsonify({'response': response})
 
-@app.route('/api', methods=["GET"])
+@app.route('/gui', methods=["GET"])
 def gui():
 
     response = None
     url = ''
 
     # check if passed url 
-    url = request.args['url']
+    #url = request.args['url']
 
     if request.method == "GET" and len(url) == 0: 
             return render_template("gui.j2")
 
 
     else:
+        url = request.args['url']
+
+
         # validate passed url 
         if not validate_url(url):
             response = "error: url invalid"
