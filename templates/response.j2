@@ -3,12 +3,17 @@
 {% block head %}
     {{ super() }}
     <style type="text/css">
-        .important { color: #336699; }
+        .results { 
+            color: #336699; 
+            white-space: pre-wrap;
+            background: lightgrey;
+        }
     </style>
 {% endblock %}
 {% block content %}
-    <h1>Index</h1>
-    <p class="important" style="white-space: pre-wrap">
+    <h1>Image-to-Text</h1>
+    <h2>Results:<h2>
+    <p class="results">
       {{response}}
     </p>
 {% endblock %}
