@@ -81,7 +81,7 @@ def gui():
         # return response in json
 
         # return jsonify({'response': response})
-            return render_template("response.j2", response=response)
+        return render_template("response.j2", response=response)
 
 if __name__ == "__main__":
     host = '10.0.0.1' #'localhost.'
