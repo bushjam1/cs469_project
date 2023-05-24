@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from urllib.parse import urlparse
 import json 
 
@@ -50,9 +50,15 @@ def api():
     else: 
         response = get_img_text(url)
 
-    
-
+    # return response in json
     return jsonify({'response': response})
+
+@app.route('/api', methods=["GET"])
+def gui():
+    if request.method == "GET": 
+            return render_template("gui.j2")
+
+
 
 
 if __name__ == "__main__":

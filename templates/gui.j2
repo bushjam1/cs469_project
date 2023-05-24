@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- 
+https://jinja.palletsprojects.com/en/2.10.x/templates/#base-template
+-->
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="../static/style.css" />
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+<body>
+    <div id="content">
+    {% block content %}
+    <h1>Flask Application</h1>
+    <p>Hello there!</p>
+    {% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2022 by me.
+        {% endblock %}
+    </div>
+</body>
+</html>
