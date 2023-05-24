@@ -78,7 +78,8 @@ def gui():
         else: 
             response = get_img_text(url)
 
-        # return response in json
+        # return response in text
+        response = json.loads(response.text)['response']
 
         # return jsonify({'response': response})
         return render_template("response.j2", response=response)
