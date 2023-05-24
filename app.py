@@ -64,7 +64,7 @@ def gui():
     # check if passed url 
     #url = request.args['url']
 
-    if request.method == "GET" and len(url) == 0: 
+    if request.method == "GET" and len(request.args) == 0: 
             return render_template("gui.j2")
 
 
