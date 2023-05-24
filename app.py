@@ -70,7 +70,7 @@ def gui():
 
     else:
         url = urllib.unquote(request.args['url'])
-
+        print('**URL',url)
 
         # validate passed url 
         if not validate_url(url):
