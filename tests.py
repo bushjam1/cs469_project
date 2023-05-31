@@ -33,7 +33,7 @@ def tests():
 
     img_urls = {
             'alexanderplatz':'https://live.staticflickr.com/3912/15349926286_992542ec2e.jpg',
-            'account':'https://i.pinimg.com/736x/7b/08/c9/7b08c9eff1bce30f6e13afba65002f10.jpg',                   
+            'jeans':'https://openclipart.org/image/2400px/svg_to_png/194537/receipt.png',                   
             'turmstrasse':'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/U-Bahn_Turmstra%C3%9Fe%2C_Berlin.jpg/320px-U-Bahn_Turmstra%C3%9Fe%2C_Berlin.jpg',
             'stop':'http://upload.wikimedia.org/wikipedia/commons/f/f9/STOP_sign.jpg'
             
