@@ -6,12 +6,11 @@ def runtest(test_num, url):
     url = base_url + img_url 
 
     # call the API with image URL, get response or error
-    print()
-    print("="*80)
+    print("\n","="*80)
     print(f"Test number: {test_num}")
     response = requests.get(url)
     print("Status:",response.status_code)
-    print("Result:",response.text)
+    print("Result:",response.json['response'])
     if response.status_code == 200:
         print("TEST PASSED")
     else:
@@ -20,12 +19,13 @@ def runtest(test_num, url):
 
 def tests():
 
-    img_urls = [
-
-            ]
+    img_urls = [    'https://live.staticflickr.com/3760/13307397783_5266496226_b.jpg',
+                    'https://live.staticflickr.com/2397/2476584907_73def16be0.jpg',
+                    'https://live.staticflickr.com/5342/13965039173_9fdb82e940_b.jpg'
+                ]
     # test 1
-    img_url = 'https://i.pinimg.com/originals/42/84/0f/42840fafe6b8c8024c3cf7b6a7661957.jpg'
-    runtest(1, img_url)
+    for i in range(len(img_urls)):
+        runtest(i, img_url[i])
 
     # test 2 
     # test 3 
