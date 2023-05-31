@@ -2,7 +2,10 @@ import requests
 import json 
 
 def runtest(test_num, img_url, val):
-    
+    """Take test_num, img_url, and sought val, check if 
+    request is successful and if sought value inlcuded in results.
+    """
+
     base_url = 'http://10.0.0.1:5000/api?url='
     url = base_url + img_url 
     # call the API with image URL, get response or error
@@ -25,6 +28,8 @@ def runtest(test_num, img_url, val):
         return False
     
 def tests():
+    """Driver function for tests.
+    """
 
     img_urls = {
             'alexanderplatz':'https://live.staticflickr.com/3912/15349926286_992542ec2e.jpg',
@@ -33,9 +38,8 @@ def tests():
             'stop':'http://upload.wikimedia.org/wikipedia/commons/f/f9/STOP_sign.jpg'
             
             }
-
     results = {'pass':0,'fail':0}
-    # test 1
+    # tests
     test_seq = 0 
     for key, val in img_urls.items():
         test_seq += 1
@@ -50,4 +54,5 @@ def tests():
     print()
 
 if __name__ == "__main__":
+    print("RUNNING TESTS...")
     tests()
