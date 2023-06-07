@@ -11,6 +11,13 @@ import os
 
 app = Flask(__name__)
 
+with open('/etc/config.json') as config_file:
+  config = json.load(config_file)
+
+app.config['SECRET_KEY'] = config.get('SECRET_KEY')
+        
+exit()
+
 def validate_url(url):
     """Take url, return True if valid url and contains image, False otherwise. 
     
