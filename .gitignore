@@ -1,5 +1,3 @@
-images/
+env
 notes.md
-ocr_proj/
-__pycache__/
-old/**
+__pycache__
