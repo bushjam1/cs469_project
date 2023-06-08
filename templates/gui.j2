@@ -15,9 +15,9 @@ https://jinja.palletsprojects.com/en/2.10.x/templates/#base-template
     <h1>Image-to-Text</h1>
     <p>Hello there! Input a URL to an image on the web in .jpg or .png format and get back detected text.</p>
     <form action="/gui">
-    <label for="url">URL:</label><br>
-    <input type="text" id="url" name="url" size=100><br>
-    <input type="submit" value="Submit">
+    <label class="url_label" for="url">URL:</label><br>
+    <input class="url_text" type="text" id="url" name="url"><br>
+    <input class="url_submit_btn" type="submit" value="Submit">
     </form> 
 
     {% endblock %}
