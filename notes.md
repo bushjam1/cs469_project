@@ -15,6 +15,8 @@ gunicorn wsgi:app
 ## UFW
 configured access to port 5000 with this rule
 `sudo ufw allow from 10.0.0.3 to any port 5000`
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
+
 
 ## Access and Error Logs
 /var/log/nginx/access.log
