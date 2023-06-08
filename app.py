@@ -16,7 +16,6 @@ with open('/etc/config.json') as config_file:
 
 app.config['SECRET_KEY'] = config.get('SECRET_KEY')
         
-exit()
 
 def validate_url(url):
     """Take url, return True if valid url and contains image, False otherwise. 
@@ -91,6 +90,9 @@ def gui():
         return render_template("response.j2", response=response)
 
 if __name__ == "__main__":
-    host = '10.0.0.1' #'localhost.'
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host=host, port=port, debug=True)
+    # former configuration
+    # host = '10.0.0.1' #'localhost.'
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host=host, port=port, debug=True)
+    # new config based on https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+    app.run(host='0.0.0.0')
