@@ -11,6 +11,16 @@ p {
   font-size: 1.2em;
 
 }
+a {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #43BDFF;
+}
+a:hover{
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #fcbf49;
+}
 #content {
   margin: auto;
   background: #FBF9F0;
@@ -18,7 +28,12 @@ p {
   max-width: 90%;
   min-width: 90%;
   min-height: 500px;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+#contentCopy{
+  padding 1rem;
+  margin: 1rem;
 }
 #footer{
   margin: auto;
@@ -27,8 +42,7 @@ p {
   min-height: 100px;
   max-width: 90%;
   min-width: 90%;
-  padding: 1rem;
-  max-width: 75%;
+  padding-top: 1rem;
 }
 input[type=text]{
   width: 80%;
@@ -37,6 +51,8 @@ input[type=text]{
   color: #003049;
   height: 2rem;
   margin: 1rem;
+  border-radius: 5px;
+  max-width: 650px;
 }
 input[type=submit] {
   background: #43BDFF;
@@ -45,6 +61,8 @@ input[type=submit] {
   width: 8rem;
   height: 3rem;
   margin: 2rem;
+  margin-top: 1rem;
+  border-radius: 5px;
 }
 .url_label {
   color: #003049;
@@ -61,6 +79,7 @@ input[type=submit] {
   font-size: .8rem;
   text-align: left;
   max-width: 500px;
+  margin-bottom: 1rem;
 }
 
 .tip{
@@ -72,4 +91,18 @@ input[type=submit] {
   background: #FEFDFA;
   border: 1px dashed #D1D1D1;
   border-radius: 5px;
+}
+#loader {
+  margin: auto;
+  border: 6px solid #FBF9F0; /* Light grey */
+  border-top: 6px solid #FBF9F0; /* Blue */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 0s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

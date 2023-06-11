@@ -17,7 +17,8 @@ def request_img(url):
   """
   response = requests.get(url)
   if response.status_code != 200:
-    raise Exception("URL Error: check URL and try again")
+    #raise Exception("URL Error: check URL and try again")
+    return None
   img = Image.open(BytesIO(response.content))
 
   return img

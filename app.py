@@ -33,6 +33,8 @@ def validate_url(url):
 def get_img_text(url):
     print("Requesting...")
     img = request_img(url)
+    if img is None:
+        return "error: requested resource not available"
     print("Request successful.")
     preprocessed = preprocess(img)
     print("Preprocess successful.")

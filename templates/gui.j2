@@ -11,14 +11,16 @@
     <div id="content">
     {% block content %}
     <h1>Image-to-Text</h1>
-    <div>
+    <div id="contentCopy">
     <p>Hello there! Input a URL to an image on the web in .jpg or .png format and get back detected text.</p>
     </div>
     <div>
-    	<form action="/gui">
+    	<form action="/gui" onsubmit="loadFunc()">
     	<label class="url_label" for="url">URL:</label><br>
-    	<input class="url_text" type="text" id="url" name="url" placeholder="http://example.com/image1.jpg"><br>
-    	<input class="url_submit_btn" type="submit" value="Submit">
+    	<input class="url_text" type="text" id="url" name="url" placeholder="http://example.com/image1.jpg">
+	<br>
+	<div id="loader"></div>
+	<input class="url_submit_btn" type="submit" value="Submit">
     	</form>
     </div>
     <div class="tip"><p><b>💡 Tip: </b>Clearer text, better results. Receipts and documents work great!</p></div>
@@ -30,5 +32,14 @@
         &copy; Copyright 2023 James Bush.
         {% endblock %}
     </div>
+
+  <script>
+    function loadFunc() {
+      var x = document.getElementById("loader");
+      x.style.animation = "spin 1s linear infinite";
+      x.style.border = "6px solid #f3f3f3"; 
+      x.style.borderTop = "6px solid #43BDFF";
+  } 
+  </script>
 </body>
 </html>
