@@ -45,7 +45,7 @@ def get_img_text(url):
     
 
 
-@app.route('/api', methods=["GET"])
+@app.route('/cs469/api', methods=["GET"])
 def api():
 
     response = None
@@ -63,7 +63,7 @@ def api():
     # return response in json
     return jsonify({'response': response})
 
-@app.route('/gui', methods=["GET"])
+@app.route('/cs469/gui', methods=["GET"])
 def gui():
 
     response = None
