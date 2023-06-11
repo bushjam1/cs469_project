@@ -6,7 +6,8 @@ def runtest(test_num, img_url, val):
     request is successful and if sought value inlcuded in results.
     """
 
-    base_url = 'http://10.0.0.1:5000/api?url='
+    #base_url = 'http://10.0.0.1:5000/api?url='
+    base_url = 'http://173.255.246.7/cs469/api?url='
     url = base_url + img_url 
     # call the API with image URL, get response or error
     print("\n")
