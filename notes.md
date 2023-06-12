@@ -11,6 +11,9 @@ https://github.com/madmaze/pytesseract
 
 ## Run the app 
 gunicorn wsgi:app 
+flask run config in __main__
+based on https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+
 
 ## UFW
 configured access to port 5000 with this rule

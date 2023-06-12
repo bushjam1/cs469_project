@@ -30,7 +30,7 @@ def validate_url(url):
 
 
 def get_img_text(url):
-    print("Requesting...")
+    print("get_img_text() requesting...")
     img = request_img(url)
     if img is None:
         return "error: requested resource not available"
@@ -75,9 +75,11 @@ def gui():
     # check headers
     print(request.headers)
 
+    # GUI main without query
     if request.method == "GET" and len(request.args) == 0:
         return render_template("gui.j2")
 
+    # query submitted
     else:
         url = unquote(request.args["url"])
         print("**URL", url)
@@ -89,8 +91,6 @@ def gui():
             response = get_img_text(url)
 
         # return response in text
-
-        # return jsonify({'response': response})
         return render_template("response.j2", response=response)
 
 
@@ -99,5 +99,5 @@ if __name__ == "__main__":
     # host = '10.0.0.1' #'localhost.'
     # port = int(os.environ.get('PORT', 5000))
     # app.run(host=host, port=port, debug=True)
-    # new config based on https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+    # new config 
     app.run(host="0.0.0.0")
