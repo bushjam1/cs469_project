@@ -16,6 +16,7 @@ with open("/etc/config.json") as config_file:
 
 app.config["SECRET_KEY"] = config.get("SECRET_KEY")
 
+
 def validate_url(url):
     """Take url, return True if valid url and contains image, False otherwise.
 
@@ -24,9 +25,7 @@ def validate_url(url):
     """
     result = urlparse(url)
     supported_image = url.split(".")[-1] in ["jpg", "png"]
-    print("scheme:", result.scheme)
-    print("netloc:", result.netloc)
-    print("is image:", supported_image)
+    print(f"validate_url() \n scheme: {result.scheme} \n netloc: {result.netloc} \n is image: {supported_image}")
     return all([result.scheme, result.netloc, supported_image])
 
 
