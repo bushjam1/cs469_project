@@ -5,84 +5,95 @@ from io import BytesIO
 import pytesseract
 from datetime import datetime
 
-#------------------------------------------------------------------------------
-# Request image 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# Request image
+# ------------------------------------------------------------------------------
+
 
 def request_img(url):
-  """Return image from internets with Requests and passed url. 
-  
-  Keyword arguments:
-  url -- url to image
-  """
-  response = requests.get(url)
-  if response.status_code != 200:
-    #raise Exception("URL Error: check URL and try again")
-    return None
-  img = Image.open(BytesIO(response.content))
+    """Return image from internets with Requests and passed url.
 
-  return img
+    Keyword arguments:
+    url -- url to image
+    """
+    response = requests.get(url)
+    if response.status_code != 200:
+        # raise Exception("URL Error: check URL and try again")
+        return None
+    img = Image.open(BytesIO(response.content))
 
-#------------------------------------------------------------------------------
-# Preprocess image 
-#------------------------------------------------------------------------------
+    return img
 
-# grayscale 
+
+# ------------------------------------------------------------------------------
+# Preprocess image
+# ------------------------------------------------------------------------------
+
+
+# grayscale
 def grayscale(img):
     return img.convert("L")
+
 
 # edging
 def edge(img):
     return img.filter(ImageFilter.FIND_EDGES)
 
-# thresholding 
+
+# thresholding
 def threshold(img, thresh):
     return img.point(lambda x: 255 if x > thresh else 0)
+
 
 # invert
 def invert(img):
     return ImageOps.invert(img)
 
+
 def preprocess(img):
     img_gray = grayscale(img)
     img_threshold = threshold(img_gray, 180)
     result = img_threshold
-    return result 
+    return result
 
-#------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
 # OCR Image
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+
 
 def ocr_img(img):
-  """Recognize text with Tesseract and return string. 
+    """Recognize text with Tesseract and return string.
 
-  Keyword arguments:
-  response -- response from request_img
-  """
+    Keyword arguments:
+    response -- response from request_img
+    """
 
-#   img = Image.open(BytesIO(response.content))
-  #config = "--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyz" #oem: default OCR engine; psm: assume single block text
-  config = r'--oem 3 --psm 6' #oem: default OCR engine; psm: assume single block text
-  text = pytesseract.image_to_string(img, config=config, lang="eng")
-  return text
+    #   img = Image.open(BytesIO(response.content))
+    # config = "--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyz" #oem: default OCR engine; psm: assume single block text
+    config = (
+        r"--oem 3 --psm 6"  # oem: default OCR engine; psm: assume single block text
+    )
+    text = pytesseract.image_to_string(img, config=config, lang="eng")
+    return text
 
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Main
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-  if len(sys.argv) == 2:
-    url = sys.argv[1]
-  else:
-    # raise Exception("Usage: python3 py_ocr.py <image_url.jpg>")
-    url = "https://openclipart.org/image/2400px/svg_to_png/194537/receipt.png"
+    if len(sys.argv) == 2:
+        url = sys.argv[1]
+    else:
+        # raise Exception("Usage: python3 py_ocr.py <image_url.jpg>")
+        url = "https://openclipart.org/image/2400px/svg_to_png/194537/receipt.png"
 
-    print("Requesting...")
-    img = request_img(url)
-    print("Request successful.")
-    preprocessed = preprocess(img)
-    print("Preprocess successful.")
-    text = ocr_img(preprocessed)
-    print("OCR successful.")
-    print(text)
+        print("Requesting...")
+        img = request_img(url)
+        print("Request successful.")
+        preprocessed = preprocess(img)
+        print("Preprocess successful.")
+        text = ocr_img(preprocessed)
+        print("OCR successful.")
+        print(text)

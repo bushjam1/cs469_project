@@ -1,34 +1,35 @@
 from flask import Flask, request, jsonify, render_template
 from urllib.parse import urlparse
 from urllib.parse import unquote
-import json 
+import json
 
 from img_to_text import request_img, preprocess, ocr_img
 
 import requests
 
-import os 
+import os
 
 app = Flask(__name__)
 
-with open('/etc/config.json') as config_file:
-  config = json.load(config_file)
+with open("/etc/config.json") as config_file:
+    config = json.load(config_file)
 
-app.config['SECRET_KEY'] = config.get('SECRET_KEY')
-        
+app.config["SECRET_KEY"] = config.get("SECRET_KEY")
+
 
 def validate_url(url):
-    """Take url, return True if valid url and contains image, False otherwise. 
-    
-    Keyword arguments: 
+    """Take url, return True if valid url and contains image, False otherwise.
+
+    Keyword arguments:
     url -- requies scheme, netloc, and supported image extension to be valid
     """
     result = urlparse(url)
-    supported_image = url.split('.')[-1] in ['jpg', 'png']
+    supported_image = url.split(".")[-1] in ["jpg", "png"]
     print("scheme:", result.scheme)
     print("netloc:", result.netloc)
     print("is image:", supported_image)
     return all([result.scheme, result.netloc, supported_image])
+
 
 def get_img_text(url):
     print("Requesting...")
@@ -42,48 +43,45 @@ def get_img_text(url):
     print("OCR successful.")
     print(text)
     return text
-    
 
 
-@app.route('/cs469/api', methods=["GET"])
+@app.route("/cs469/api", methods=["GET"])
 def api():
-
     response = None
-    url = ''
+    url = ""
 
-    # check if passed url 
-    url = request.args['url']
+    # check if passed url
+    url = request.args["url"]
 
-    # validate passed url 
+    # validate passed url
     if not validate_url(url):
         response = "error: url invalid"
-    else: 
+    else:
         response = get_img_text(url)
 
     # return response in json
-    return jsonify({'response': response})
+    return jsonify({"response": response})
 
-@app.route('/cs469/gui', methods=["GET"])
+
+@app.route("/cs469/gui", methods=["GET"])
 def gui():
-
     response = None
-    url = ''
+    url = ""
 
-    # check if passed url 
-    #url = request.args['url']
+    # check if passed url
+    # url = request.args['url']
 
-    if request.method == "GET" and len(request.args) == 0: 
-            return render_template("gui.j2")
-
+    if request.method == "GET" and len(request.args) == 0:
+        return render_template("gui.j2")
 
     else:
-        url = unquote(request.args['url'])
-        print('**URL',url)
+        url = unquote(request.args["url"])
+        print("**URL", url)
 
-        # validate passed url 
+        # validate passed url
         if not validate_url(url):
             response = "error: url invalid"
-        else: 
+        else:
             response = get_img_text(url)
 
         # return response in text
@@ -91,10 +89,11 @@ def gui():
         # return jsonify({'response': response})
         return render_template("response.j2", response=response)
 
+
 if __name__ == "__main__":
     # former configuration
     # host = '10.0.0.1' #'localhost.'
     # port = int(os.environ.get('PORT', 5000))
     # app.run(host=host, port=port, debug=True)
     # new config based on https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
-    app.run(host='0.0.0.0')
+    app.run(host="0.0.0.0")
