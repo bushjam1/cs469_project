@@ -16,7 +16,6 @@ with open("/etc/config.json") as config_file:
 
 app.config["SECRET_KEY"] = config.get("SECRET_KEY")
 
-
 def validate_url(url):
     """Take url, return True if valid url and contains image, False otherwise.
 
@@ -50,6 +49,9 @@ def api():
     response = None
     url = ""
 
+    # get headers 
+    print(request.headers)
+
     # check if passed url
     url = request.args["url"]
 
@@ -70,6 +72,9 @@ def gui():
 
     # check if passed url
     # url = request.args['url']
+
+    # check headers
+    print(request.headers)
 
     if request.method == "GET" and len(request.args) == 0:
         return render_template("gui.j2")
