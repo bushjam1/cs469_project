@@ -2,15 +2,14 @@ import requests
 import json
 
 
-def runtest(test_num, img_url, val):
+def runtest(test_num, img_url, val, base_url):
     """
     Take test_num, img_url, and sought val, check if
     request is successful and if sought value inlcuded in results.
     """
 
     # base_url = 'http://10.0.0.1:5000/api?url='
-    base_url = "http://173.255.246.7/cs469/api?url="
-    url = base_url + img_url
+    url = base_url + '?url=' + img_url
     # call the API with image URL, get response or error
     print("\n")
     print("=" * 80)
@@ -43,9 +42,11 @@ def tests():
     results = {"pass": 0, "fail": 0}
     # tests
     test_seq = 0
+    base_url = input("Please enter API URL specified in Project Deliverables section 3.1 (e.g., 'http://255.255.255.255/<path>/<path>'):\n")
+
     for key, val in img_urls.items():
         test_seq += 1
-        res = runtest(test_seq, val, key)
+        res = runtest(test_seq, val, key, base_url)
         if res is True:
             results["pass"] += 1
         else:
